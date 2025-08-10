@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>SearchKart</display-name>
+  
+  <servlet>
+	<servlet-name>ExecuteSearchServlet</servlet-name>
+	<servlet-class>com.app.ExecuteSearchServlet</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+	<servlet-name>ExecuteSearchServlet</servlet-name>
+	<url-pattern>/ExecuteSearchServlet</url-pattern>
+ </servlet-mapping>
+  
+  
+<servlet>
+	<servlet-name>ProcessDataServlet</servlet-name>
+	<servlet-class>com.app.ProcessDataServlet</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+	<servlet-name>ProcessDataServlet</servlet-name>
+	<url-pattern>/ProcessDataServlet</url-pattern>
+ </servlet-mapping>
+ 
+</web-app>
