@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Navigation PageDesign/Lesson</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="sara mazal lessons">
+<meta name="keywords" content="HTML, CSS, JavaScript, mazal, icons">
+<meta name="author" content="Sara Mazal">
+<!--  SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500&family=Raleway:wght@100;200;300;400;500&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuOiBodHRwczovL2NvZGVwZW4uaW8vU2FyYW1hemFsICYgR2l0SHViOiBodHRwczovL2dpdGh1Yi5jb20vc2FyYW1hemFs -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js"></script>
+    <script>
+        // Function to update HTML content with JSON data
+        function updateHtml(jsonData) {
+            var table = '<table border="1"><tr><th><h2>Price</h2></th><th><h2>Availability</h2></th><th><h2>Source Domain</h2></th><th><h2>Product Link</h2></th></tr>';
+
+            for (var i = 0; i < jsonData.length; i++) {
+                table += '<tr>';
+                table += '<td>' + jsonData[i].price + '</td>';
+                table += '<td>' + jsonData[i].availability + '</td>';
+                table += '<td>' + jsonData[i].sourceDomain + '</td>';
+                table += '<td><a href="' + jsonData[i].productLink + '" target="_blank">Buy Now</a></td>';
+                table += '</tr>';
+            }
+
+            table += '</table>';
+
+            // Wrap the table with a div and apply the "container" class
+            var container = document.getElementById('container');
+            container.innerHTML = table;
+            
+                // Add "read-only" class to disable styles
+    var navElement = document.querySelector('.nav');
+    var sliderElement = document.querySelector('.slider');
+
+    if (navElement) {
+        navElement.classList.add('read-only');
+    }
+
+    if (sliderElement) {
+        sliderElement.classList.add('read-only');
+    }
+    // Hide the loading spinner once data is fetched
+    hideLoadingSpinner();
+
+    // Reset the label text
+    resetLabel();
+        }
+
+        // Function to fetch JSON data from ProcessDataServlet
+        function fetchData() {
+			
+
+    
+            // Create a new FormData object to send the file
+            var formData = new FormData(document.getElementById('searchForm'));
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Configure it to make a POST request to ExecuteSearchServlet
+            xhr.open('POST', 'ExecuteSearchServlet', true);
+
+            // Set the response type to JSON
+            xhr.responseType = 'json';
+
+            // Define the callback function to handle the response
+            xhr.onload = function () {
+                // Check if the request was successful
+                if (xhr.status === 200) {
+                    // Call the updateHtml function with the received JSON data
+                    updateHtml(xhr.response);
+                } else {
+                    console.error('Failed to fetch data');
+                }
+            };
+
+            // Send the FormData object with the file
+            xhr.send(formData);
+        }
+
+        // Call the fetchData function when the page loads
+        //window.onload = fetchData;
+    </script>
+</head>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<sectio class="nav">
+  <h1>ctrlchic</h1>
+  <h3 class="span loader"><span class="m">s</span><span class="m">h</span><span class="m">o</span><span class="m">p</span><span class="m">p</span><span class="m">i</span><span class="m">n</span><span class="m">g</span><span class="m">&nbsp;</span><span class="m">m</span><span class="m">a</span><span class="m">d</span><span class="m">e</span><span class="m">&nbsp;</span><span class="m">e</span><span class="m">a</span><span class="m">s</span><span class="m">y</span></h3>
+<form id="searchForm" enctype="multipart/form-data">
+            <label for="fileInput" class="glow-on-hover" id="imageLabel">Select Image</label>
+            <input type="file" name="fileInput" id="fileInput" accept="image/*" style="display:none;" onchange="handleImageSelection(this)">
+            <div id="loadingSpinner"></div>
+            <div id="container"></div>
+        </form>
+</sectio>
+<canvas class="background"></canvas><!-- SGVsbG8hIE15IG5hbWUgaXMgU2FyYSBNYXphbC4gV2VsY29tZSB0byBteSBDb2RlUGVuIQ== -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
